@@ -1,8 +1,9 @@
 import BaseException from './BaseException';
+import Request, { RequestBuilder } from "../Router/Request";
 
 export default class ExceptionHandler
 {
-    public handle(exception: any)
+    public handle(exception: any): string
     {
         if (exception instanceof BaseException) {
             return this.handleCustomException(exception);
@@ -18,7 +19,12 @@ export default class ExceptionHandler
 
     public handleSystemException(exception: any)
     {
-        console.log(exception);
-        return '/exception?message=' + exception.message;
+        let request: Request = new RequestBuilder()
+            .setStatus('EXCEPTION')
+            .addParam('message', exception.message)
+            .setType('RESPONSE')
+            .build();
+
+        return request.toString();
     }
 }

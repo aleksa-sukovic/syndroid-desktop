@@ -1,44 +1,29 @@
-import RouteDefinition from "./RouteDefinition";
-import BaseException from "../../Exceptions/BaseException";
 import RouteParser from "./RouteParser";
+import BaseController from "../../Controllers/BaseController";
 
 export default class Route
 {
     protected path: string;
     protected params: any;
-    protected definition: RouteDefinition;
+    protected handler: string;
+    protected controller: any;
 
-    public constructor (path: string, definition?: RouteDefinition)
+    public constructor (path: string, handler?: string, controller?: any)
     {
         this.path = path;
-        if (definition) {
-            this.setDefinition(definition);
-        }
-        this.params = RouteParser.parseParams(this);
+        this.handler = handler;
+        this.controller = controller;
+        this.params = RouteParser.parseParams(path);
     }
 
-    public addParam = function (key: string, value: any): void
+    public match(route: Route): boolean
+    {
+        return this.path === route.path;
+    }
+
+    public addParam(key: string, value: any): void
     {
         this.params[key] = value;
-    }
-
-    public setDefinition(definition: RouteDefinition): void
-    {
-        if (!definition.match(this)) {
-            throw new BaseException('Provided definition could not be applied to specified route.', 500);
-        }
-
-        this.definition = definition;
-    }
-
-    public getDefinition(): RouteDefinition
-    {
-        return this.definition;
-    }
-
-    public getHandler(): string
-    {
-        return this.definition.handler;
     }
 
     public getPath(): string
@@ -46,8 +31,31 @@ export default class Route
         return this.path;
     }
 
+    public getHandler(): string
+    {
+        return this.handler;
+    }
+
+    public getController(): any
+    {
+        return BaseController;
+    }
+
     public getParams(): any
     {
         return this.params;
+    }
+
+    public toString(): string
+    {
+        let params = [];
+        for (let key in this.params) {
+            if (this.params.hasOwnProperty(key)) {
+                params.push(key + '=' + this.params[key]);
+            }
+        }
+
+        return this.path + '?' + params.join('&');
+
     }
 }

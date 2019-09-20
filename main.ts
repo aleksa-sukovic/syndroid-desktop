@@ -46,7 +46,7 @@ async function createWindow() {
 try {
 
     app.on('ready', () => {
-        createWindow();
+        Application.init().then(() => createWindow());
     });
 
     app.on('window-all-closed', () => {

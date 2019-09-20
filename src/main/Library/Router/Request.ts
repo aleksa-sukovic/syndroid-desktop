@@ -1,25 +1,22 @@
 import Route from "./Route/Route";
-import RouteParser from "./Route/RouteParser";
-import InvalidRouteException from "../Exceptions/InvalidRouteException";
 
 export default class Request
 {
+    protected static ID: number = 0;
+
+    protected id: number;
+    protected route: Route;
     public status: string;
     public type: string;
-    protected route: Route;
-
-    public static createFromString(data: string): Request
-    {
-        if (!RouteParser.isValidPath(data)) {
-            throw new InvalidRouteException();
-        }
-
-        return new Request(new Route(data));
-    }
+    public expectsResponse: string;
 
     public constructor(route: Route)
     {
         this.route = route;
+        this.id = this.has('id') ? parseInt(this.input('id')) : ++Request.ID;
+        this.type = this.input('type');
+        this.status = this.input('status');
+        this.expectsResponse = '0';
     }
 
     public has(param: string): boolean
@@ -29,7 +26,7 @@ export default class Request
 
     public input(param: string): any
     {
-        return this.route.getParams().params[param];
+        return this.route.getParams()[param];
     }
 
     public typeResponse(): boolean
@@ -51,6 +48,26 @@ export default class Request
     {
         return this.route;
     }
+
+    public setRoute(route: Route): void
+    {
+        this.route = route;
+    }
+
+    public getID(): number
+    {
+        return this.id;
+    }
+
+    public doesExpectResponse(): boolean
+    {
+        return this.expectsResponse === '1';
+    }
+
+    public toString(): string
+    {
+        return this.route.toString() + '&id=' + this.id + '&status=' + this.status + '&type=' + this.type + '&expectsResponse=' + (this.expectsResponse ? 1 : 0);
+    }
 }
 
 export class RequestBuilder
@@ -71,6 +88,12 @@ export class RequestBuilder
     public setStatus(status: string): RequestBuilder
     {
         this.request.status = status;
+        return this;
+    }
+
+    public expectResponse(): RequestBuilder
+    {
+        this.request.expectsResponse = '1';
         return this;
     }
 

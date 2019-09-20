@@ -4,12 +4,12 @@ import ServiceProvider from "./ServiceProvider";
 
 export default class Bootstrapper
 {
-    public bootstrap(): void
+    public static async bootstrap()
     {
-        Application.setRoutes(this.bootstrapRoutes());
+        Application.setRoutes(Bootstrapper.bootstrapRoutes());
     }
 
-    protected bootstrapRoutes(): Route[]
+    protected static bootstrapRoutes(): Route[]
     {
         let routes: Route[] = [];
         let providers: ServiceProvider[] = Application.getProviders();

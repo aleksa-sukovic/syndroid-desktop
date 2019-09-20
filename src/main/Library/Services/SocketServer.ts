@@ -73,6 +73,11 @@ export default class SocketServer
         this.client.send(message);
     }
 
+    public isConnected(): boolean
+    {
+        return this.server && this.server.clients.size === 1;
+    }
+
     public addListener(listener: { key: string, callback: (data?: any) => void }): void
     {
         this.listeners.push(listener);

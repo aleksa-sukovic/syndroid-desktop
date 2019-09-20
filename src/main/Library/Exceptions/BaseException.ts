@@ -1,4 +1,4 @@
-import Request from "../Router/Request";
+import Request, { RequestBuilder } from "../Router/Request";
 
 export default class BaseException
 {
@@ -15,6 +15,13 @@ export default class BaseException
 
     public render()
     {
+        let request: Request = new RequestBuilder()
+            .addParam('message', this.message)
+            .addParam('statusCode', this.statusCode)
+            .setType('RESPONSE')
+            .setStatus('EXCEPTION')
+            .build();
+
         let output = '/exception?message=' + this.message + '&statusCode=' + this.statusCode;
 
         if (this.request && this.request.has('request_id')) {
