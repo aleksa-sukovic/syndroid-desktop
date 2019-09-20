@@ -2,17 +2,17 @@ import Route from "./Route";
 
 export default class RouteDefinition
 {
-    protected definition: string;
+    protected path: string;
     protected regEx: string;
-    protected controller: any;
-    protected handler: any;
+    public controller: any;
+    public handler: any;
 
-    public constructor(definition: string, controller: any, handler: any)
+    public constructor(path: string, controller: any, handler: any)
     {
-        this.definition = definition;
+        this.path = path;
         this.controller = controller;
         this.handler = handler;
-        this.regEx = this.constructRegExPath(definition);
+        this.regEx = this.constructRegExPath(path);
     }
 
     public match(route: Route): boolean
@@ -20,9 +20,16 @@ export default class RouteDefinition
         return (new RegExp(this.regEx)).test(route.getPath());
     }
 
+    public matchString(route: string): boolean
+    {
+        route = route.split('?')[0];
+
+        return (new RegExp(this.regEx)).test(route);
+    }
+
     public getPath(): string
     {
-        return this.definition;
+        return this.path;
     }
 
     protected constructRegExPath(path: string): string

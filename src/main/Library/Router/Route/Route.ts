@@ -1,5 +1,6 @@
 import RouteDefinition from "./RouteDefinition";
 import BaseException from "../../Exceptions/BaseException";
+import RouteParser from "./RouteParser";
 
 export default class Route
 {
@@ -7,11 +8,18 @@ export default class Route
     protected params: any;
     protected definition: RouteDefinition;
 
-    public constructor (path: string, definition: RouteDefinition)
+    public constructor (path: string, definition?: RouteDefinition)
     {
         this.path = path;
-        this.params = {};
-        this.setDefinition(definition);
+        if (definition) {
+            this.setDefinition(definition);
+        }
+        this.params = RouteParser.parseParams(this);
+    }
+
+    public addParam = function (key: string, value: any): void
+    {
+        this.params[key] = value;
     }
 
     public setDefinition(definition: RouteDefinition): void
@@ -26,6 +34,11 @@ export default class Route
     public getDefinition(): RouteDefinition
     {
         return this.definition;
+    }
+
+    public getHandler(): string
+    {
+        return this.definition.handler;
     }
 
     public getPath(): string

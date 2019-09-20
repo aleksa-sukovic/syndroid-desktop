@@ -20,7 +20,7 @@ export default class SocketServer
 
         this.server.on('connection', socket => this.onClientConnect(socket));
 
-        this.emmitEvent('socket:opened');
+        this.emitEvent('socket:opened');
     }
 
     protected  onClientConnect(client: WebSocket)
@@ -35,7 +35,7 @@ export default class SocketServer
         client.on('close', () => this.onClientDisconnect());
         this.client = client;
 
-        this.emmitEvent('socket:client-connected');
+        this.emitEvent('socket:client-connected');
     }
 
     public stop()
@@ -49,19 +49,19 @@ export default class SocketServer
             this.server.close();
         }
 
-        this.emmitEvent('socket:closed');
+        this.emitEvent('socket:closed');
     }
 
     public onClientMessage(message)
     {
-        this.emmitEvent('socket:client-message', message);
+        this.emitEvent('socket:client-message', message);
     }
 
     public onClientDisconnect()
     {
         this.client = null;
 
-        this.emmitEvent('socket:client-disconnect');
+        this.emitEvent('socket:client-disconnect');
     }
 
     public sendMessage(message)
@@ -87,7 +87,7 @@ export default class SocketServer
         }
     }
 
-    public emmitEvent(key: string, data?: any): void
+    public emitEvent(key: string, data?: any): void
     {
         for (let listener of this.listeners) {
             if (listener.key === key) {
