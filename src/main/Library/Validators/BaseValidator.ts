@@ -4,6 +4,8 @@ import { ValidationException, ValidationError } from "../Exceptions/ValidationEx
 
 export default abstract class BaseValidator
 {
+    protected static readonly FLOAT_REGEX = '[-+]?[0-9]+.?[0-9]*';
+
     public validate(request: Request): void
     {
         const rules  = this.filterRules(request);
