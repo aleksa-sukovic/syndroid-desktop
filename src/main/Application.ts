@@ -92,7 +92,7 @@ export default class Application
     public getProviders(): ServiceProvider[]
     {
         return [
-          //
+            new MouseServiceProvider(),
         ];
     }
 }
