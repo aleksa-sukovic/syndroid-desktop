@@ -2,7 +2,7 @@ import Rule from './Rule';
 import Request from '../Router/Request';
 import { ValidationException, ValidationError } from "../Exceptions/ValidationException";
 
-export default class BaseValidator
+export default abstract class BaseValidator
 {
     public validate(request: Request): void
     {
@@ -14,6 +14,8 @@ export default class BaseValidator
         this.validatePattern(request, rules, errors);
         this.afterValidation(errors, request);
     }
+
+    public abstract getRules(): Rule[];
 
     public validateRequired(params: any, rules: Rule[], errors: ValidationError[]): void
     {
@@ -27,13 +29,16 @@ export default class BaseValidator
     public validatePattern(params: any, rules: Rule[], errors: ValidationError[])
     {
         for (const param in params) {
-            let rule = rules.find(rule => rule.name === param);
+            if (!params.hasOwnProperty(param)) {
+                continue;
+            }
 
+            let rule = rules.find(rule => rule.name === param);
             if (!rule) {
                 continue;
             }
 
-            if (!params[param].match(rule.pattern)) {
+            if (!params[param].toString().match(rule.pattern)) {
                 this.addValidationError(errors, param, 'pattern', `Value ${params[param]} does not match required pattern`);
             }
         }
@@ -66,17 +71,18 @@ export default class BaseValidator
     {
         const handler = request.getRoute().getHandler();
 
-        let rules = this.getRules().filter(rule => {
+        let rules = this.getDefaultRules().concat(this.getRules());
+        rules = rules.filter(rule => {
             return rule.handlers.indexOf(handler) > -1 || rule.isGlobal;
         });
 
         return rules;
     }
 
-    public getRules(): Rule[]
+    protected getDefaultRules(): Rule[]
     {
         return [
-            new Rule('request_id', '*', '[0-9]+', true),
+            new Rule('id', '*', '[0-9]+', true),
         ];
     }
 }

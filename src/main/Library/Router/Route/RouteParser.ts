@@ -24,7 +24,7 @@ export default class RouteParser
     {
         let helper = routePath.split('?');
         if (helper.length < 2) {
-            return;
+            return output;
         }
         helper = helper[1].split('&');
 

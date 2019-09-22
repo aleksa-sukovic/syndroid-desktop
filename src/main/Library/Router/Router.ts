@@ -47,15 +47,12 @@ export default class Router
     protected handleTypeRequest(request: Request): any
     {
         let foundRoute = this.findRoute(request.getRoute());
-
         if (!foundRoute) {
             throw new RouteNotFoundException();
         }
 
-        let controller = request.getRoute().getController();
-        controller = new controller();
-
         request.setRoute(foundRoute);
+        let controller = new (request.getRoute().getController())();
         let response = controller.handle(request);
 
         if (request.doesExpectResponse()) {
@@ -67,7 +64,7 @@ export default class Router
     {
         for (let availableRoute of this.routes) {
             if (availableRoute.match(route)) {
-                return new Route(route.getPath(), availableRoute.getHandler(), availableRoute.getController());
+                return new Route(route.getPath(), availableRoute.getController(), availableRoute.getHandler());
             }
         }
 

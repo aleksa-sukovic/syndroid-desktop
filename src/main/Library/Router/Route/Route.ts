@@ -6,11 +6,11 @@ export default class Route
     protected path: string;
     protected params: any;
     protected handler: string;
-    protected controller: any;
+    protected controller: typeof BaseController;
 
-    public constructor (path: string, handler?: string, controller?: any)
+    public constructor (path: string, controller?: typeof BaseController, handler?: string)
     {
-        this.path = path;
+        this.path = path.split('?')[0];
         this.handler = handler;
         this.controller = controller;
         this.params = RouteParser.parseParams(path);
@@ -36,9 +36,9 @@ export default class Route
         return this.handler;
     }
 
-    public getController(): any
+    public getController(): typeof BaseController
     {
-        return BaseController;
+        return this.controller;
     }
 
     public getParams(): any

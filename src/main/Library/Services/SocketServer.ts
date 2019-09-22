@@ -7,7 +7,7 @@ export default class SocketServer
     protected port: number;
     protected server: WebSocket.Server;
     protected client: WebSocket;
-    protected listeners: { key: string, callback: (data?: any) => void }[];
+    protected listeners: { key: string, callback: (data?: any) => void }[] = [];
 
     public constructor(port: number)
     {

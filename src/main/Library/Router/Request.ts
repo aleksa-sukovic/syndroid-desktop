@@ -16,7 +16,7 @@ export default class Request
         this.id = this.has('id') ? parseInt(this.input('id')) : ++Request.ID;
         this.type = this.input('type');
         this.status = this.input('status');
-        this.expectsResponse = '0';
+        this.expectsResponse = this.input('expectsResponse') === 'yes' ? '1' : '0';
     }
 
     public has(param: string): boolean
@@ -31,12 +31,12 @@ export default class Request
 
     public typeResponse(): boolean
     {
-        return this.type === 'RESPONSE';
+        return this.type === 'response';
     }
 
     public typeRequest(): boolean
     {
-        return this.type === 'REQUEST';
+        return this.type === 'request';
     }
 
     public addParam(key: string, value: any): void
@@ -62,6 +62,11 @@ export default class Request
     public doesExpectResponse(): boolean
     {
         return this.expectsResponse === '1';
+    }
+
+    public getParams(): any
+    {
+        return this.route.getParams();
     }
 
     public toString(): string

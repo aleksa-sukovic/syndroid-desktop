@@ -6,38 +6,35 @@ import Bootstrapper from "./Library/Services/Bootstrapper";
 import EventHandler from "./Library/Events/EventHandler";
 import ExceptionHandler from "./Library/Exceptions/ExceptionHandler";
 import Request from "./Library/Router/Request";
+import MouseServiceProvider from "./Mouse/MouseServiceProvider";
 
 export default class Application
 {
-    protected static routes: Route[];
+    protected routes: Route[];
     protected router: Router;
     protected socketService: SocketServer;
     protected exceptionHandler: ExceptionHandler;
     protected eventHandler: EventHandler;
 
-    public static async init()
-    {
-        await Bootstrapper.bootstrap();
-    }
-
-    public static setRoutes(routes: Route[]): void
-    {
-        Application.routes = routes;
-    }
-
     public constructor()
     {
+        // bootstrap service providers
+        const bootstrapper = new Bootstrapper(this.getProviders());
+        this.routes = bootstrapper.bootstrap().routes;
+
+        // initialize properties
         this.socketService = new SocketServer(3000);
-        this.router = new Router(Application.routes);
         this.exceptionHandler = new ExceptionHandler();
         this.eventHandler = new EventHandler();
+        this.router = new Router(this.routes);
 
+        // Hook event listeners
         this.eventHandler.listen(this);
-        this.socketService.addListener({ key: 'socket:opened', callback: this.handleSocketOpen.bind(this)});
-        this.socketService.addListener({ key: 'socket:closed', callback: this.handleSocketClose.bind(this)});
-        this.socketService.addListener({ key: 'socket:client-connected', callback: this.handleClientConnect.bind(this)});
-        this.socketService.addListener({ key: 'socket:client-message', callback: this.handleClientMessage.bind(this)});
-        this.socketService.addListener({ key: 'socket:client-disconnect', callback: this.handleClientDisconnect.bind(this)});
+        this.socketService.addListener({ key: 'socket:opened', callback: this.handleSocketOpen.bind(this) });
+        this.socketService.addListener({ key: 'socket:closed', callback: this.handleSocketClose.bind(this) });
+        this.socketService.addListener({ key: 'socket:client-connected', callback: this.handleClientConnect.bind(this) });
+        this.socketService.addListener({ key: 'socket:client-message', callback: this.handleClientMessage.bind(this) });
+        this.socketService.addListener({ key: 'socket:client-disconnect', callback: this.handleClientDisconnect.bind(this) });
     }
 
     public serve(): void
@@ -92,7 +89,7 @@ export default class Application
         EventHandler.notifyWindows('client:disconnect', data);
     }
 
-    public static getProviders(): ServiceProvider[]
+    public getProviders(): ServiceProvider[]
     {
         return [
           //

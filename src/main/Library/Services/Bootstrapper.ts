@@ -1,20 +1,32 @@
-import Application from "../../Application";
 import Route from "../Router/Route/Route";
 import ServiceProvider from "./ServiceProvider";
 
+export interface Bootstrapped
+{
+    routes: Route[];
+}
+
 export default class Bootstrapper
 {
-    public static async bootstrap()
+    protected providers: ServiceProvider[];
+
+    public constructor(providers: ServiceProvider[])
     {
-        Application.setRoutes(Bootstrapper.bootstrapRoutes());
+        this.providers = providers;
     }
 
-    protected static bootstrapRoutes(): Route[]
+    public bootstrap(): Bootstrapped
+    {
+        return {
+            routes: this.bootstrapRoutes(),
+        };
+    }
+
+    protected bootstrapRoutes(): Route[]
     {
         let routes: Route[] = [];
-        let providers: ServiceProvider[] = Application.getProviders();
 
-        for (let provider of providers) {
+        for (let provider of this.providers) {
             routes = routes.concat(provider.getRoutes());
         }
 

@@ -46,7 +46,10 @@ async function createWindow() {
 try {
 
     app.on('ready', () => {
-        Application.init().then(() => createWindow());
+        createWindow().then(() => {
+            let synDroid = new Application();
+            synDroid.serve();
+        });
     });
 
     app.on('window-all-closed', () => {
