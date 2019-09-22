@@ -87,6 +87,7 @@
         "@fortawesome/fontawesome-free": "^5.10.1",
         "@types/ws": "^6.0.3",
         "cloudpurge_robotjs": "^0.5.2",
+        "electron-shutdown-command": "0.0.8",
         "typeface-roboto": "0.0.75",
         "ws": "^7.1.2"
     }

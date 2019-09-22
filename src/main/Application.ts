@@ -9,6 +9,7 @@ import Request from "./Library/Router/Request";
 import MouseServiceProvider from "./Mouse/MouseServiceProvider";
 import MediaServiceProvider from "./Media/MediaServiceProvider";
 import KeyboardServiceProvider from "./Keyboard/KeyboardServiceProvider";
+import StateServiceProvider from "./State/StateServiceProvider";
 
 export default class Application
 {
@@ -97,6 +98,7 @@ export default class Application
             new MouseServiceProvider(),
             new MediaServiceProvider(),
             new KeyboardServiceProvider(),
+            new StateServiceProvider(),
         ];
     }
 }
