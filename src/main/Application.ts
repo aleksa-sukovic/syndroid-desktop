@@ -8,6 +8,7 @@ import ExceptionHandler from "./Library/Exceptions/ExceptionHandler";
 import Request from "./Library/Router/Request";
 import MouseServiceProvider from "./Mouse/MouseServiceProvider";
 import MediaServiceProvider from "./Media/MediaServiceProvider";
+import KeyboardServiceProvider from "./Keyboard/KeyboardServiceProvider";
 
 export default class Application
 {
@@ -95,6 +96,7 @@ export default class Application
         return [
             new MouseServiceProvider(),
             new MediaServiceProvider(),
+            new KeyboardServiceProvider(),
         ];
     }
 }
