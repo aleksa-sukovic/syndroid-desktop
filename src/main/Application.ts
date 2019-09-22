@@ -7,6 +7,7 @@ import EventHandler from "./Library/Events/EventHandler";
 import ExceptionHandler from "./Library/Exceptions/ExceptionHandler";
 import Request from "./Library/Router/Request";
 import MouseServiceProvider from "./Mouse/MouseServiceProvider";
+import MediaServiceProvider from "./Media/MediaServiceProvider";
 
 export default class Application
 {
@@ -93,6 +94,7 @@ export default class Application
     {
         return [
             new MouseServiceProvider(),
+            new MediaServiceProvider(),
         ];
     }
 }
