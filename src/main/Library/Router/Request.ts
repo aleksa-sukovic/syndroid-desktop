@@ -2,21 +2,19 @@ import Route from "./Route/Route";
 
 export default class Request
 {
-    protected static ID: number = 0;
-
     protected id: number;
     protected route: Route;
     public status: string;
     public type: string;
-    public expectsResponse: string;
+    public expectsResponse: boolean;
 
     public constructor(route: Route)
     {
         this.route = route;
-        this.id = this.has('id') ? parseInt(this.input('id')) : ++Request.ID;
+        this.id = this.has('id') ? parseInt(this.input('id')) : -1;
         this.type = this.input('type');
         this.status = this.input('status');
-        this.expectsResponse = this.input('expectsResponse') === 'yes' ? '1' : '0';
+        this.expectsResponse = this.input('expectsResponse') === 'yes';
     }
 
     public has(param: string): boolean
@@ -59,9 +57,14 @@ export default class Request
         return this.id;
     }
 
+    public setID(id: number): void
+    {
+        this.id = id;
+    }
+
     public doesExpectResponse(): boolean
     {
-        return this.expectsResponse === '1';
+        return this.expectsResponse;
     }
 
     public getParams(): any
@@ -71,12 +74,13 @@ export default class Request
 
     public toString(): string
     {
-        return this.route.toString() + '&id=' + this.id + '&status=' + this.status + '&type=' + this.type + '&expectsResponse=' + (this.expectsResponse ? 1 : 0);
+        return this.route.toString() + '&id=' + this.id + '&status=' + this.status + '&type=' + this.type + '&expectsResponse=' + (this.expectsResponse ? 'yes' : 'no');
     }
 }
 
 export class RequestBuilder
 {
+    protected static ID: number = 0;
     protected request: Request;
 
     public constructor()
@@ -84,7 +88,7 @@ export class RequestBuilder
         this.request = new Request(new Route(''));
     }
 
-    public setType(type: string): RequestBuilder
+    public setType(type: 'request' | 'response'): RequestBuilder
     {
         this.request.type = type;
         return this;
@@ -98,13 +102,19 @@ export class RequestBuilder
 
     public expectResponse(): RequestBuilder
     {
-        this.request.expectsResponse = '1';
+        this.request.expectsResponse = true;
         return this;
     }
 
     public addParam(key: string, value: any): RequestBuilder
     {
         this.request.addParam(key, value);
+        return this;
+    }
+
+    public withID(id?: number): RequestBuilder
+    {
+        this.request.setID(id ? id : ++RequestBuilder.ID);
         return this;
     }
 

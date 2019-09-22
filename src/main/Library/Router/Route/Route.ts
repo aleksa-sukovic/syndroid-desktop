@@ -49,6 +49,7 @@ export default class Route
     public toString(): string
     {
         let params = [];
+
         for (let key in this.params) {
             if (this.params.hasOwnProperty(key)) {
                 params.push(key + '=' + this.params[key]);
@@ -56,6 +57,5 @@ export default class Route
         }
 
         return this.path + '?' + params.join('&');
-
     }
 }

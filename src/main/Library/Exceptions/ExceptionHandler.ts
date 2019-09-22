@@ -19,12 +19,11 @@ export default class ExceptionHandler
 
     public handleSystemException(exception: any)
     {
-        let request: Request = new RequestBuilder()
-            .setStatus('EXCEPTION')
+        return new RequestBuilder()
             .addParam('message', exception.message)
-            .setType('RESPONSE')
-            .build();
-
-        return request.toString();
+            .setStatus('exception')
+            .setType('response')
+            .build()
+            .toString();
     }
 }

@@ -4,6 +4,6 @@ export default class HandlerNotFoundException extends BaseException
 {
     constructor(handler: string)
     {
-        super('Handler: \'' + handler + '\' not found.', 404);
+        super("Handler: " + handler + "' not found.", 404);
     }
 }

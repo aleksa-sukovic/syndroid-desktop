@@ -15,27 +15,16 @@ export default class BaseException
 
     public render()
     {
-        let request: Request = new RequestBuilder()
+        let request: RequestBuilder = new RequestBuilder()
             .addParam('message', this.message)
             .addParam('statusCode', this.statusCode)
-            .setType('RESPONSE')
-            .setStatus('EXCEPTION')
-            .build();
+            .setType('response')
+            .setStatus('exception');
 
-        let output = '/exception?message=' + this.message + '&statusCode=' + this.statusCode;
-
-        if (this.request && this.request.has('request_id')) {
-            output = output + '&type=response&request_id=' + this.request.input('request_id');
+        if (this.request) {
+            request.addParam('id', this.request.getID());
         }
 
-        return output;
-    }
-
-    public toArray()
-    {
-        return {
-            message: this.message,
-            statusCode: this.statusCode,
-        };
+        return request.build().toString();
     }
 }

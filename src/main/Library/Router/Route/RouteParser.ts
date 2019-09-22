@@ -2,15 +2,6 @@ import Route from "./Route";
 
 export default class RouteParser
 {
-    public static isValidPath(route: string): boolean
-    {
-        if (!route || typeof route !== 'string') {
-            return false;
-        }
-
-        return /^(\/[a-zA-Z0-9{}\-_|]+)+(\?([a-zA-Z0-9_|]+=[^?&]+)(&[a-zA-Z0-9_|]+=[^?&]+)*)*$/.test(route);
-    }
-
     public static parseParams(routePath: string): any
     {
         let params = {};

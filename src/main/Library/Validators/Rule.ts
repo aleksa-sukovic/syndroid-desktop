@@ -10,7 +10,7 @@ export default class Rule
     {
         this.name     = name;
         this.pattern  = new RegExp('^' + pattern + '$');
-        this.required = required
+        this.required = required;
         this.handlers = handlers.split('|');
         this.isGlobal = handlers === '*';
     }

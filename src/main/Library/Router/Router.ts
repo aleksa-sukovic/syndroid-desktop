@@ -17,6 +17,8 @@ export default class Router
         if (request.doesExpectResponse() && onResponse) {
             this.responseListeners.push({ requestId: request.getID(), callback: onResponse });
         }
+
+        return request;
     }
 
     public handleRequest(data: string): any
@@ -64,7 +66,7 @@ export default class Router
     {
         for (let availableRoute of this.routes) {
             if (availableRoute.match(route)) {
-                return new Route(route.getPath(), availableRoute.getController(), availableRoute.getHandler());
+                return new Route(route.toString(), availableRoute.getController(), availableRoute.getHandler());
             }
         }
 
