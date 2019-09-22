@@ -56,7 +56,7 @@ export default class Application
             return;
         }
 
-        this.socketService.sendMessage(this.router.sendRequest(request, callback));
+        this.socketService.sendMessage(this.router.sendRequest(request, callback).toString());
     }
 
     protected handleSocketOpen(data?: any): void

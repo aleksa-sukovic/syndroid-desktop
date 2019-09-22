@@ -12,8 +12,8 @@ export default abstract class BaseValidator
         const errors: ValidationError[] = [];
 
         this.beforeValidation(rules);
-        this.validateRequired(request, rules, errors);
-        this.validatePattern(request, rules, errors);
+        this.validateRequired(request.getParams(), rules, errors);
+        this.validatePattern(request.getParams(), rules, errors);
         this.afterValidation(errors, request);
     }
 

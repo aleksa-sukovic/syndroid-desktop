@@ -12,7 +12,7 @@ export default class Router
         this.routes = routes;
     }
 
-    public sendRequest(request: Request, onResponse?: (request: Request) => void): any
+    public sendRequest(request: Request, onResponse?: (request: Request) => void): Request
     {
         if (request.doesExpectResponse() && onResponse) {
             this.responseListeners.push({ requestId: request.getID(), callback: onResponse });

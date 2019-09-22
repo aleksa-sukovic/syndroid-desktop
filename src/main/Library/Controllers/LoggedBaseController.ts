@@ -6,7 +6,7 @@ export default class LoggedBaseController extends BaseController
     public handle(request: Request): any
     {
         console.log('--------------------');
-        console.log('About to handle request with id => ' + request.getID());
+        console.log('About to handle request with id => ' + request.getID() + ' and path => ' + request.getRoute().toString());
         console.log('Request params:');
         console.log(request.getParams());
 

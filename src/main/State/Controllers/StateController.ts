@@ -1,4 +1,3 @@
-import * as Robot from 'cloudpurge_robotjs';
 import * as Shutdown from 'electron-shutdown-command';
 import LoggedBaseController from "../../Library/Controllers/LoggedBaseController";
 import StateValidator from "../Validators/StateValidator";
