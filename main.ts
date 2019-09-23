@@ -1,25 +1,26 @@
-import { app, BrowserWindow } from 'electron';
-import * as path from 'path';
 import * as url from 'url';
+import * as path from 'path';
 import Application from './src/main/Application';
+import { app, BrowserWindow, Menu, Tray } from 'electron';
 
-let mainWindow, serve;
-const args = process.argv.slice(1);
-serve = args.some(val => val === '--serve');
+let synDroid: Application = null;
+let mainWindow: BrowserWindow = null;
+let tray: Tray = null;
+let serve: boolean = process.argv.slice(1)
+    .some(val => val === '--serve');
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
-async function createWindow() {
-
+async function initializeMainWindow()
+{
     mainWindow = new BrowserWindow({
-        x: 0,
-        y: 0,
+        center: true,
         width: 450,
         height: 450,
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
         },
-        icon: path.join(__dirname, 'build/icon.icns')
+        icon: path.join('assets/tray.png')
     });
 
     if (serve) {
@@ -28,6 +29,7 @@ async function createWindow() {
         });
 
         await mainWindow.loadURL('http://localhost:4200');
+        mainWindow.webContents.openDevTools();
     } else {
         await mainWindow.loadURL(url.format({
             pathname: path.join(__dirname, 'dist/index.html'),
@@ -36,34 +38,55 @@ async function createWindow() {
         }));
     }
 
-    if (serve) {
-        mainWindow.webContents.openDevTools();
-    }
-
     mainWindow.on('closed', () => mainWindow = null);
 }
 
-try {
+function initializeTray() {
+    tray = new Tray(path.join('assets/tray.png'));
+    const contextMenu = Menu.buildFromTemplate([
+        { label: 'Show', type: 'normal', click: () => {
+            if (mainWindow === null) {
+                initializeMainWindow();
+            }
+        }},
+        { label: '', type: 'separator' },
+        { label: 'Exit', type: 'normal', click: () => terminate() }
+    ]);
+    tray.setToolTip('SynDroid');
+    tray.setContextMenu(contextMenu);
+}
 
+function terminate() {
+    if (synDroid !== null) {
+        synDroid.stop();
+    }
+
+    if (app !== null) {
+        app.quit();
+    }
+
+    synDroid = null;
+    mainWindow = null;
+}
+
+try {
     app.on('ready', () => {
-        createWindow().then(() => {
-            let synDroid = new Application();
+        initializeMainWindow().then(() => {
+            synDroid = new Application();
             synDroid.serve();
         });
+        initializeTray();
     });
 
     app.on('window-all-closed', () => {
-        if (process.platform !== 'darwin') {
-            app.quit();
-        }
+        mainWindow = null;
     });
 
     app.on('activate', () => {
         if (mainWindow === null) {
-            createWindow().then(() => console.log('Application booted.'));
+            initializeMainWindow().then(() => console.log('Application booted.'));
         }
     });
-
 } catch (e) {
     //
 }
