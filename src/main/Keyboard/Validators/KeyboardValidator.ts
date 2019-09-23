@@ -1,7 +1,7 @@
-import BaseValidator from "../../Library/Validators/BaseValidator";
 import Rule from "../../Library/Validators/Rule";
+import LoggedValidator from "../../Library/Validators/LoggedValidator";
 
-export default class KeyboardValidator extends BaseValidator
+export default class KeyboardValidator extends LoggedValidator
 {
     public getRules(): Rule[]
     {
