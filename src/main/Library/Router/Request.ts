@@ -116,6 +116,12 @@ export class RequestBuilder
         return this;
     }
 
+    public setRouteByPath(path: string): RequestBuilder
+    {
+        this.request.setRoute(new Route(path));
+        return this;
+    }
+
     public build(): Request
     {
         return this.request;

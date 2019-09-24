@@ -60,13 +60,13 @@ export default class Application
         }
     }
 
-    public sendRequest(request: Request, callback?: (request: Request) => void): void
+    public sendRequest(message: string): void
     {
         if (!this.socketService.isConnected()) {
             return;
         }
 
-        this.socketService.sendMessage(this.router.sendRequest(request, callback).toString());
+        this.socketService.sendMessage(message);
     }
 
     protected handleSocketOpen(data?: any): void

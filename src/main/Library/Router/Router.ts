@@ -1,24 +1,15 @@
 import Request from './Request';
 import Route from "./Route/Route";
 import RouteNotFoundException from "../Exceptions/RouteNotFoundException";
+import EventHandler from "../Events/EventHandler";
 
 export default class Router
 {
     protected routes: Route[];
-    protected responseListeners: { requestId: number, callback: (request: Request) => void }[] = [];
 
     constructor(routes: Route[])
     {
         this.routes = routes;
-    }
-
-    public sendRequest(request: Request, onResponse?: (request: Request) => void): Request
-    {
-        if (request.doesExpectResponse() && onResponse) {
-            this.responseListeners.push({ requestId: request.getID(), callback: onResponse });
-        }
-
-        return request;
     }
 
     public handleRequest(data: string): any
@@ -36,14 +27,7 @@ export default class Router
 
     protected handleTypeResponse(request: Request): any
     {
-        for (let i = 0; i < this.responseListeners.length; i++) {
-            if (this.responseListeners[i].requestId === request.getID()) {
-                this.responseListeners[i].callback(request);
-                this.responseListeners.splice(i, 1);
-
-                return;
-            }
-        }
+        EventHandler.notifyWindows('request:receive', request);
     }
 
     protected handleTypeRequest(request: Request): any

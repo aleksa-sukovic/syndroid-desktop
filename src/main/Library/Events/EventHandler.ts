@@ -7,12 +7,11 @@ export default class EventHandler
 
     public listen(application: Application): void
     {
-        ipcMain.on('request:send', (event, request, callback) => {
-            application.sendRequest(request, callback);
+        ipcMain.on('request:send', (event, message) => {
+            application.sendRequest(message);
         });
 
         ipcMain.on('ip:get', (event) => {
-            console.log('TEST');
             event.sender.send('ip:get', Application.getIP());
         });
     }

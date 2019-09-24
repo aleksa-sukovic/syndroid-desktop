@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class ConnectComponent implements OnInit
 {
-    protected ip: string = '';
+    public ip: string = '';
 
     public constructor (private electron: ElectronService, private ngZone: NgZone, private router: Router)
     {
