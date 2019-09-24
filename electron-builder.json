@@ -1,5 +1,5 @@
 {
-    "productName": "angular-electron",
+    "productName": "SynDroid",
     "directories": {
         "output": "release/"
     },
@@ -20,19 +20,19 @@
         "!tslint.json"
     ],
     "win": {
-        "icon": "dist",
+        "icon": "dist/assets/icon.png",
         "target": [
             "portable"
         ]
     },
     "mac": {
-        "icon": "dist",
+        "icon": "dist/assets/icon.png",
         "target": [
             "dmg"
         ]
     },
     "linux": {
-        "icon": "build/icon.icns",
+        "icon": "dist/assets/icon.png",
         "target": [
             "AppImage"
         ]

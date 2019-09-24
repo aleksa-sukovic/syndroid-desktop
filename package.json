@@ -2,7 +2,6 @@
     "name": "syndroid-desktop",
     "version": "1.0.0",
     "description": "Two way communication between Your phone and PC",
-    "homepage": "",
     "author": {
         "name": "Aleksa Sukovic",
         "email": "sukovic.aleksa@gmail.com"

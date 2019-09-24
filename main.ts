@@ -21,7 +21,6 @@ async function initializeMainWindow()
         webPreferences: {
             nodeIntegration: true,
         },
-        icon: path.join('assets/tray.png')
     });
 
     if (serve) {
@@ -44,7 +43,8 @@ async function initializeMainWindow()
 }
 
 function initializeTray() {
-    tray = new Tray(path.join('assets/tray.png'));
+    tray = serve ? new Tray('local/tray.png') : new Tray(path.join(process.resourcesPath, 'dist/assets/tray.png'));
+
     const contextMenu = Menu.buildFromTemplate([
         { label: 'Show', type: 'normal', click: () => {
             if (mainWindow === null) {
@@ -59,6 +59,8 @@ function initializeTray() {
 }
 
 function terminate() {
+    EventHandler.removeWindow(mainWindow);
+
     if (synDroid !== null) {
         synDroid.stop();
     }
@@ -67,7 +69,6 @@ function terminate() {
         app.quit();
     }
 
-    EventHandler.removeWindow(mainWindow);
     synDroid = null;
     mainWindow = null;
 }
