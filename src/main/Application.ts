@@ -1,15 +1,16 @@
-import Route from "./Library/Router/Route/Route";
-import ServiceProvider from "./Library/Services/ServiceProvider";
-import SocketServer from "./Library/Services/SocketServer";
+import * as IP from 'ip';
 import Router from "./Library/Router/Router";
-import Bootstrapper from "./Library/Services/Bootstrapper";
-import EventHandler from "./Library/Events/EventHandler";
-import ExceptionHandler from "./Library/Exceptions/ExceptionHandler";
 import Request from "./Library/Router/Request";
+import Route from "./Library/Router/Route/Route";
+import EventHandler from "./Library/Events/EventHandler";
+import SocketServer from "./Library/Services/SocketServer";
+import Bootstrapper from "./Library/Services/Bootstrapper";
 import MouseServiceProvider from "./Mouse/MouseServiceProvider";
 import MediaServiceProvider from "./Media/MediaServiceProvider";
-import KeyboardServiceProvider from "./Keyboard/KeyboardServiceProvider";
 import StateServiceProvider from "./State/StateServiceProvider";
+import ServiceProvider from "./Library/Services/ServiceProvider";
+import ExceptionHandler from "./Library/Exceptions/ExceptionHandler";
+import KeyboardServiceProvider from "./Keyboard/KeyboardServiceProvider";
 
 export default class Application
 {
@@ -18,6 +19,11 @@ export default class Application
     protected socketService: SocketServer;
     protected exceptionHandler: ExceptionHandler;
     protected eventHandler: EventHandler;
+
+    public static getIP(): string
+    {
+        return IP.address();
+    }
 
     public constructor()
     {

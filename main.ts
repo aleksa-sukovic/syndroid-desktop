@@ -15,9 +15,10 @@ async function initializeMainWindow()
 {
     mainWindow = new BrowserWindow({
         center: true,
-        width: 450,
-        height: 450,
+        width: 300,
+        height: 550,
         resizable: false,
+        maximizable: false,
         webPreferences: {
             nodeIntegration: true,
         },

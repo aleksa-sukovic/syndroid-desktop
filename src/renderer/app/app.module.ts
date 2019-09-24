@@ -15,6 +15,7 @@ import { EntryModule } from './@business/entry/entry.module';
 import { SharedModule } from './@shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {DashboardModule} from "./@business/dashboard/dashboard.module";
+import { ConnectModule } from './@business/connect/connect.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         GlobalModule,
         SharedModule,
         EntryModule,
+        ConnectModule,
         DashboardModule,
     ],
     bootstrap: [ AppComponent ]

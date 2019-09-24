@@ -10,6 +10,11 @@ export default class EventHandler
         ipcMain.on('request:send', (event, request, callback) => {
             application.sendRequest(request, callback);
         });
+
+        ipcMain.on('ip:get', (event) => {
+            console.log('TEST');
+            event.sender.send('ip:get', Application.getIP());
+        });
     }
 
     public static addWindow(window: BrowserWindow): void

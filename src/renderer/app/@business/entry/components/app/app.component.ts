@@ -10,6 +10,6 @@ export class AppComponent
 {
     public constructor (router: Router)
     {
-        router.navigate(['dashboard']);
+        router.navigate(['connect']);
     }
 }
