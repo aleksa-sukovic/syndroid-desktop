@@ -42,12 +42,16 @@ export default class Application
 
     public serve(): void
     {
-        this.socketService.start();
+        if (this.socketService !== null) {
+            this.socketService.start();
+        }
     }
 
     public stop(): void
     {
-        this.socketService.stop();
+        if (this.socketService !== null) {
+            this.socketService.stop();
+        }
     }
 
     public sendRequest(request: Request, callback?: (request: Request) => void): void

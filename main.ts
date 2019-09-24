@@ -2,6 +2,7 @@ import * as url from 'url';
 import * as path from 'path';
 import Application from './src/main/Application';
 import { app, BrowserWindow, Menu, Tray } from 'electron';
+import EventHandler from "./src/main/Library/Events/EventHandler";
 
 let synDroid: Application = null;
 let mainWindow: BrowserWindow = null;
@@ -39,6 +40,7 @@ async function initializeMainWindow()
     }
 
     mainWindow.on('closed', () => mainWindow = null);
+    EventHandler.addWindow(mainWindow);
 }
 
 function initializeTray() {
@@ -65,6 +67,7 @@ function terminate() {
         app.quit();
     }
 
+    EventHandler.removeWindow(mainWindow);
     synDroid = null;
     mainWindow = null;
 }
