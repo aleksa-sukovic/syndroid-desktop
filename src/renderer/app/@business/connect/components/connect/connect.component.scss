@@ -1,3 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Heading elements */
 .header {
     padding-top: 15px;
     font-family: 'Roboto', serif;
@@ -19,10 +27,7 @@
     color: #766D5F;
 }
 
-.container {
-    margin-top: 60%;
-}
-
+/* Text */
 .lead {
     font-family: 'Roboto', 'serif';
     font-weight: lighter;
@@ -34,6 +39,7 @@
     text-align: center;
     font-family: 'Roboto', 'serif';
     font-weight: normal;
+    margin-bottom: 10px;
     color: #766D5F;
 
     h3 {
@@ -44,6 +50,14 @@
     p {
         color: #5A503E;
         margin: 0;
+    }
+}
+
+/* QR Code */
+.qr-container {
+    p {
+        margin-bottom: 10px;
+        font-size: 14px;
     }
 }
 

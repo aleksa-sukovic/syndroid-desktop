@@ -1,6 +1,7 @@
 import * as QR from 'qrcode-generator';
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ElectronService } from '../../../../@global/services/electron.service';
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'connect',
@@ -11,7 +12,7 @@ export class ConnectComponent implements OnInit
 {
     protected ip: string = '';
 
-    public constructor (private electron: ElectronService, private ngZone: NgZone)
+    public constructor (private electron: ElectronService, private ngZone: NgZone, private router: Router)
     {
         //
     }
@@ -21,7 +22,8 @@ export class ConnectComponent implements OnInit
         setTimeout(() => {
             this.electron.ipcRenderer.send('ip:get');
             this.electron.ipcRenderer.on('ip:get', this.handleIPAddressFetchEvent.bind(this));
-        }, 50);
+            this.electron.ipcRenderer.on('client:connect', this.handleClientConnected.bind(this));
+        }, 100);
     }
 
     protected handleIPAddressFetchEvent(event: Event, data: any)
@@ -38,5 +40,10 @@ export class ConnectComponent implements OnInit
         qr.addData(ip);
         qr.make();
         document.getElementById('qr_container').innerHTML = qr.createImgTag(5);
+    }
+
+    protected handleClientConnected(): void
+    {
+        this.ngZone.run(() => this.router.navigate(['dashboard']));
     }
 }
