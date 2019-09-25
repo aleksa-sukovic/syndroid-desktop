@@ -24,19 +24,19 @@
         "**/src/renderer/assets/*.png"
     ],
     "win": {
-        "icon": "dist/assets/icon.png",
+        "icon": "src/renderer/assets/icon.png",
         "target": [
             "portable"
         ]
     },
     "mac": {
-        "icon": "dist/assets/icon.png",
+        "icon": "src/renderer/assets/icon.png",
         "target": [
             "dmg"
         ]
     },
     "linux": {
-        "icon": "dist/assets/icon.png",
+        "icon": "src/renderer/assets/icon.png",
         "target": [
             "AppImage"
         ]
