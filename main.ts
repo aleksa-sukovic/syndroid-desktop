@@ -44,7 +44,7 @@ async function initializeMainWindow()
 }
 
 function initializeTray() {
-    tray = serve ? new Tray('local/tray.png') : new Tray(path.join(process.resourcesPath, 'dist/assets/tray.png'));
+    tray = serve ? new Tray('local/tray.png') : new Tray(path.join(process.resourcesPath, 'src/renderer/assets/tray.png'));
 
     const contextMenu = Menu.buildFromTemplate([
         { label: 'Show', type: 'normal', click: () => {
@@ -84,6 +84,7 @@ try {
     });
 
     app.on('window-all-closed', () => {
+        EventHandler.removeWindow(mainWindow);
         mainWindow = null;
     });
 

@@ -17,7 +17,11 @@
         "!_config.yml",
         "!karma.conf.js",
         "!tsconfig.json",
-        "!tslint.json"
+        "!tslint.json",
+        "**/src/renderer/assets/*.png"
+    ],
+    "extraResources": [
+        "**/src/renderer/assets/*.png"
     ],
     "win": {
         "icon": "dist/assets/icon.png",

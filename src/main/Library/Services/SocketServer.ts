@@ -40,12 +40,12 @@ export default class SocketServer
 
     public stop()
     {
-        if (this.client !== null) {
+        if (this.client) {
             this.client.close();
             this.client = null;
         }
 
-        if (this.server != null) {
+        if (this.server) {
             this.server.close();
         }
 
