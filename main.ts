@@ -44,7 +44,7 @@ async function initializeMainWindow()
 }
 
 function initializeTray() {
-    tray = serve ? new Tray('local/tray.png') : new Tray(path.join(process.resourcesPath, 'src/renderer/assets/tray.png'));
+    tray = serve ? new Tray('src/renderer/assets/tray.png') : new Tray(path.join(process.resourcesPath, 'src/renderer/assets/tray.png'));
 
     const contextMenu = Menu.buildFromTemplate([
         { label: 'Show', type: 'normal', click: () => {

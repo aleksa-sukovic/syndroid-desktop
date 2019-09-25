@@ -1,7 +1,7 @@
 import * as QR from 'qrcode-generator';
+import { Router } from "@angular/router";
 import { Component, NgZone, OnInit } from '@angular/core';
 import { ElectronService } from '../../../../@global/services/electron.service';
-import { Router } from "@angular/router";
 
 @Component({
     selector: 'connect',
@@ -19,11 +19,11 @@ export class ConnectComponent implements OnInit
 
     public ngOnInit(): void
     {
-        setTimeout(() => {
-            this.electron.ipcRenderer.send('ip:get');
-            this.electron.ipcRenderer.on('ip:get', this.handleIPAddressFetchEvent.bind(this));
-            this.electron.ipcRenderer.on('client:connect', this.handleClientConnected.bind(this));
-        }, 100);
+        this.electron.ipcRenderer.send('ip:get');
+        this.electron.ipcRenderer.send('user:is-connected');
+        this.electron.ipcRenderer.on('ip:get', this.handleIPAddressFetchEvent.bind(this));
+        this.electron.ipcRenderer.on('client:connect', this.handleClientConnected.bind(this));
+        this.electron.ipcRenderer.on('user:is-connected', this.handleUserConnectedStatus.bind(this));
     }
 
     protected handleIPAddressFetchEvent(event: Event, data: any)
@@ -45,5 +45,12 @@ export class ConnectComponent implements OnInit
     protected handleClientConnected(): void
     {
         this.ngZone.run(() => this.router.navigate(['dashboard']));
+    }
+
+    protected handleUserConnectedStatus(event: Event, connected: any): void
+    {
+        if (connected) {
+            this.ngZone.run(() => this.router.navigate(['dashboard']));
+        }
     }
 }

@@ -11,8 +11,12 @@ export default class EventHandler
             application.sendRequest(message);
         });
 
-        ipcMain.on('ip:get', (event) => {
-            event.sender.send('ip:get', Application.getIP());
+        ipcMain.on('ip:get', event => {
+            event.sender.send('ip:get', application.getIP());
+        });
+
+        ipcMain.on('user:is-connected', event => {
+            event.sender.send('user:is-connected', application.userConnected());
         });
     }
 

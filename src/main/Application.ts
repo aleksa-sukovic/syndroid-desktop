@@ -19,11 +19,7 @@ export default class Application
     protected socketService: SocketServer;
     protected exceptionHandler: ExceptionHandler;
     protected eventHandler: EventHandler;
-
-    public static getIP(): string
-    {
-        return IP.address();
-    }
+    protected hasConnectedUser: boolean;
 
     public constructor()
     {
@@ -76,11 +72,14 @@ export default class Application
 
     protected handleSocketClose(data?: any): void
     {
+
+        this.hasConnectedUser = false;
         EventHandler.notifyWindows('socket:close', data);
     }
 
     protected handleClientConnect(data?: any): void
     {
+        this.hasConnectedUser = true;
         EventHandler.notifyWindows('client:connect', data);
     }
 
@@ -99,7 +98,18 @@ export default class Application
 
     protected handleClientDisconnect(data?: any): void
     {
+        this.hasConnectedUser = false;
         EventHandler.notifyWindows('client:disconnect', data);
+    }
+
+    public getIP(): string
+    {
+        return IP.address();
+    }
+
+    public userConnected(): boolean
+    {
+        return this.hasConnectedUser;
     }
 
     public getProviders(): ServiceProvider[]
