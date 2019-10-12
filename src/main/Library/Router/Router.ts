@@ -27,7 +27,7 @@ export default class Router
 
     protected handleTypeResponse(request: Request): any
     {
-        EventHandler.notifyWindows('request:receive', request);
+        EventHandler.notifyWindows('request:receive', request.toString());
     }
 
     protected handleTypeRequest(request: Request): any

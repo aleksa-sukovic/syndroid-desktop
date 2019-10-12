@@ -122,6 +122,12 @@ export class RequestBuilder
         return this;
     }
 
+    public setID(id: number): RequestBuilder
+    {
+        this.request.setID(id);
+        return this;
+    }
+
     public build(): Request
     {
         return this.request;

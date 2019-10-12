@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #EEE0C9;
+}
+
+.caption {
+    padding: 20px;
+    background-color: #96B6C5;
+
+    .header {
+        font-family: Roboto, serif;
+        font-size: 26px;
+        color: #F1F0E8;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .subheader {
+        font-family: Roboto, serif;
+        font-weight: lighter;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 0;
+        color: #F1F0E8;
+    }
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        background-color: #EEE0C9;
+        padding: 10px;
+
+        &:nth-child(2n) {
+            background-color: #ddd6bf;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            background-color: #809ba8;
+            cursor: default;
+
+            & .item__data {
+                color: white;
+            }
+
+            & .item__header {
+                color: white;
+            }
+        }
+    }
+}
+
+.item {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item__header {
+    font-family: "Roboto Light", serif;
+    font-weight: bold;
+    color: #5A503E;
+}
+
+.item__data {
+    font-family: "Roboto Light", serif;
+    font-weight: lighter;
+    color: #5A503E;
+}
