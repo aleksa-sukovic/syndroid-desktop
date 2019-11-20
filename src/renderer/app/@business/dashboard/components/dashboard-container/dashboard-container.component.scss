@@ -1,31 +1,32 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     height: 100%;
-    background-color: #EEE0C9;
+    background-color: rgba(183, 201, 208, 0.05);
 }
 
 .caption {
-    padding: 20px;
-    background-color: #96B6C5;
 
     .header {
         font-family: Roboto, serif;
         font-size: 26px;
-        color: #F1F0E8;
+        color: #6F93A6;
         text-align: center;
         margin-top: 0;
         margin-bottom: 0;
+        padding: 10px;
+        background-color: rgba(183, 201, 208, 0.4);
     }
 
     .subheader {
         font-family: Roboto, serif;
         font-weight: lighter;
+        font-size: 13px;
         text-align: center;
-        margin-top: 10px;
-        margin-bottom: 0;
-        color: #F1F0E8;
+        color: #6F93A6;
+        margin: 0;
+        padding: 10px;
+        background-color: rgba(183, 201, 208, 0.3);
     }
 }
 
@@ -35,11 +36,11 @@ ul {
     margin: 0;
 
     li {
-        background-color: #EEE0C9;
         padding: 10px;
+        background-color: rgba(183, 201, 208, 0.05);
 
-        &:nth-child(2n) {
-            background-color: #ddd6bf;
+        &:nth-child(2n + 1) {
+            background-color: rgba(183, 201, 208, 0.1);
         }
 
         &:first-child {
@@ -73,13 +74,12 @@ ul {
 }
 
 .item__header {
-    font-family: "Roboto Light", serif;
-    font-weight: bold;
-    color: #5A503E;
+    font-family: "Roboto", serif;
+    color: #3c5264;
 }
 
 .item__data {
     font-family: "Roboto Light", serif;
     font-weight: lighter;
-    color: #5A503E;
+    color: #3c5264;
 }
