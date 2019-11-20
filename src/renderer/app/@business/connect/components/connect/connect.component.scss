@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Heading elements */
+.header {
+    padding-top: 15px;
+    font-family: 'Roboto', serif;
+    color: #96B6C5;
+}
+
+.title {
+    font-weight: normal;
+    text-align: center;
+    font-size: 28px;
+    margin: 5px;
+}
+
+.subtitle {
+    font-weight: lighter;
+    text-align: center;
+    font-size: 18px;
+    margin: 5px;
+    color: #6F93A6;
+}
+
+/* Text */
+.lead {
+    font-family: 'Roboto', 'serif';
+    font-weight: lighter;
+    text-align: center;
+    color: #6F93A6;
+    margin-bottom: 0 !important;
+}
+
+.ip {
+    text-align: center;
+    font-family: 'Roboto', 'serif';
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #6F93A6;
+
+    h3 {
+        font-size: 14px;
+        margin-bottom: 10px !important;
+    }
+
+    p {
+        color: #384c5d;
+        margin: 0;
+    }
+}
+
+/* QR Code */
+.qr-container {
+    p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+}
+
+.qr {
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}

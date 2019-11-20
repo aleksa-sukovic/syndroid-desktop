@@ -1,0 +1,8 @@
+version: '3'
+services:
+    syndroid-ubuntu:
+        build:
+            context: .
+            dockerfile: .docker/Ubuntu.dockerfile
+        image: aleksa/syndroid-ubunty:18.04
+        command: tail -f /dev/null

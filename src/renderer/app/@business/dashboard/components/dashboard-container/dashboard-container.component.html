@@ -1,3 +1,48 @@
-<div>
-    <h1 style="text-align: center;">Dashboard</h1>
+<div class="container">
+    <div class="caption">
+        <h1 class="header">
+            Dashboard
+        </h1>
+        <p class="subheader">
+            Basic details about your phone
+        </p>
+    </div>
+    <ul>
+        <li>
+            <div class="item">
+                <span class="item__header">Battery</span>
+                <span class="item__data">{{ phone.battery }}%</span>
+            </div>
+        </li>
+        <li>
+            <div class="item">
+                <span class="item__header">Name</span>
+                <span class="item__data">{{ phone.name }}</span>
+            </div>
+        </li>
+        <li>
+            <div class="item">
+                <span class="item__header">Manufacturer</span>
+                <span class="item__data">{{ phone.manufacturer }}</span>
+            </div>
+        </li>
+        <li>
+            <div class="item">
+                <span class="item__header">Model</span>
+                <span class="item__data">{{ phone.model }}</span>
+            </div>
+        </li>
+        <li>
+            <div class="item">
+                <span class="item__header">Codename</span>
+                <span class="item__data">{{ phone.codename }}</span>
+            </div>
+        </li>
+        <li>
+            <div class="item">
+                <span class="item__header">Device Name</span>
+                <span class="item__data">{{ phone.deviceName }}</span>
+            </div>
+        </li>`
+    </ul>
 </div>
