@@ -2,15 +2,14 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: rgba(183, 201, 208, 0.05);
+    background-color: rgba(183, 201, 208, 0.1);
 }
 
 .caption {
-
     .header {
         font-family: Roboto, serif;
         font-size: 26px;
-        color: #6F93A6;
+        color: #3c5264;
         text-align: center;
         margin-top: 0;
         margin-bottom: 0;
@@ -23,7 +22,7 @@
         font-weight: lighter;
         font-size: 13px;
         text-align: center;
-        color: #6F93A6;
+        color: rgb(81, 110, 126);
         margin: 0;
         padding: 10px;
         background-color: rgba(183, 201, 208, 0.3);
@@ -34,52 +33,60 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
     li {
-        padding: 10px;
-        background-color: rgba(183, 201, 208, 0.05);
+        display: inline-block;
+        width: 50%;
+        height: 100px;
+        box-sizing: border-box;
+        padding: 15px 10px 10px 10px;
+        text-align: center;
 
-        &:nth-child(2n + 1) {
-            background-color: rgba(183, 201, 208, 0.1);
-        }
-
-        &:first-child {
-            margin-top: 0;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
+        background-color: rgba(183, 201, 208, 0.1);
+        border: solid rgba(183, 201, 208, 0.15) 1px;
 
         &:hover {
-            background-color: #809ba8;
+            background-color: #809ba831;
             cursor: default;
+        }
 
-            & .item__data {
-                color: white;
-            }
-
-            & .item__header {
-                color: white;
-            }
+        i {
+            color: #809ba88e;
+            display: inline-block;
+            margin-top: 9px;
         }
     }
 }
 
-.item {
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .item__header {
+    display: block;
+    text-align: center;
     font-family: "Roboto", serif;
-    color: #3c5264;
+    margin-bottom: 5px;
+    color: #4a6275;
 }
 
 .item__data {
-    font-family: "Roboto Light", serif;
+    display: block;
+    text-align: center;
+    font-family: "Roboto", serif;
     font-weight: lighter;
+    font-size: 14px;
     color: #3c5264;
+}
+
+.footer {
+   position: absolute;
+   bottom: 2%;
+   left: 50%;
+   transform: translateX(-50%);
+   text-align: center;
+
+   font-family: "Roboto", serif;
+   font-weight: lighter;
+   font-size: 13px;
+   color: #3c5264;
 }

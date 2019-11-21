@@ -68,9 +68,7 @@ export class DashboardContainerComponent implements OnInit, OnDestroy
             } else if (request.getID() == this.infoRequest.getID()) {
                 this.phone.name = request.getParams().name;
                 this.phone.manufacturer = request.getParams().manufacturer;
-                this.phone.model = request.getParams().model;
                 this.phone.deviceName = request.getParams().deviceName;
-                this.phone.codename = request.getParams().codename;
             }
         })
     }
