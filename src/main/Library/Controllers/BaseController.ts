@@ -1,4 +1,4 @@
-import Request from "../Router/Request";
+import Request, { RequestBuilder } from "../Router/Request";
 import BaseValidator from "../Validators/BaseValidator";
 import HandlerNotFoundException from "../Exceptions/HandlerNotFoundException";
 
@@ -12,8 +12,23 @@ export default class BaseController
             throw new HandlerNotFoundException(request.getRoute().getHandler());
         }
 
-        this.validator.validate(request);
+        if (this.validator) {
+            this.validator.validate(request);
+        }
 
         return this[request.getRoute().getHandler()](request);
+    }
+
+    protected respond(data: any, statusCode: number): string
+    {
+        let builder = new RequestBuilder()
+            .setType('response')
+            .setStatus(statusCode.toString());
+
+        for (const key in data) {
+            builder.addParam(key, data[key]);
+        }
+
+        return builder.build().toString();
     }
 }
