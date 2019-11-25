@@ -1,7 +1,7 @@
 import Rule from "../../Library/Validators/Rule";
-import LoggedValidator from "../../Library/Validators/LoggedValidator";
+import BaseValidator from "../../Library/Validators/BaseValidator";
 
-export default class StateValidator extends LoggedValidator
+export default class StateValidator extends BaseValidator
 {
     public getRules(): Rule[]
     {

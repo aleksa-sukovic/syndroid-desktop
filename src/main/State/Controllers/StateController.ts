@@ -1,8 +1,8 @@
 import * as Shutdown from 'electron-shutdown-command';
-import LoggedBaseController from "../../Library/Controllers/LoggedBaseController";
 import StateValidator from "../Validators/StateValidator";
+import BaseController from '../../Library/Controllers/BaseController';
 
-export default class StateController extends LoggedBaseController
+export default class StateController extends BaseController
 {
     public constructor()
     {
