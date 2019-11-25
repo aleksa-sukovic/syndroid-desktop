@@ -8,6 +8,7 @@ main.js
 src/**/*.js
 !src/karma.conf.js
 *.js.map
+node_modules
 
 # dependencies
 /node_modules

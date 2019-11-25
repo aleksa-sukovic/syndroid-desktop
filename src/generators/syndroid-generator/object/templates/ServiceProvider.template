@@ -1,0 +1,13 @@
+import <%= name %>Controller from './Controllers/<%= name %>Controller';
+import ServiceProvider from "../Library/Services/ServiceProvider";
+import Route from "../Library/Router/Route/Route";
+
+export default class <%= name %>ServiceProvider implements ServiceProvider
+{
+    public getRoutes(): Route[]
+    {
+        return [
+            new Route('/<%= name_lowercase %>', <%= name %>Controller, 'default'),
+        ];
+    }
+}
