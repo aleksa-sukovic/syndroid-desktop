@@ -18,7 +18,8 @@
         "!karma.conf.js",
         "!tsconfig.json",
         "!tslint.json",
-        "**/src/renderer/assets/*.png"
+        "**/src/renderer/assets/*.png",
+        "!**/generators/*"
     ],
     "extraResources": [
         "**/src/renderer/assets/*.png"
@@ -31,12 +32,14 @@
     },
     "mac": {
         "icon": "src/renderer/assets/icon.png",
+        "category": "Utility",
         "target": [
             "dmg"
         ]
     },
     "linux": {
         "icon": "src/renderer/assets/icon.png",
+        "category": "Utility",
         "target": [
             "AppImage"
         ]
