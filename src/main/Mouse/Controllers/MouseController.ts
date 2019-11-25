@@ -1,9 +1,9 @@
 import * as Robot from 'cloudpurge_robotjs';
 import Request from "../../Library/Router/Request";
 import MouseValidator from "../Validators/MouseValidator";
-import LoggedBaseController from "../../Library/Controllers/LoggedBaseController";
+import BaseController from '../../Library/Controllers/BaseController';
 
-export default class MouseController extends LoggedBaseController
+export default class MouseController extends BaseController
 {
     public constructor()
     {
@@ -17,7 +17,7 @@ export default class MouseController extends LoggedBaseController
         const y = Robot.getMousePos().y + parseFloat(request.input('y'));
 
         Robot.moveMouse(x, y);
-}
+    }
 
     public scroll(request: Request): any
     {

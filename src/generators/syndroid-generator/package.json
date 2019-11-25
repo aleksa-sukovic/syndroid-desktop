@@ -1,0 +1,17 @@
+{
+  "name": "generator-syndroid",
+  "version": "0.1.0",
+  "description": "SynDroid app object generator",
+  "files": [
+    "app",
+    "object"
+  ],
+  "keywords": [
+    "syndroid",
+    "generator",
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "3.2.0"
+  }
+}

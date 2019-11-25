@@ -1,0 +1,17 @@
+import BaseController from '../../Library/Controllers/BaseController';
+import <%= name %>Validator from '../Validators/<%= name %>Validator';
+import Request from '../../Library/Router/Request';
+
+export default class <%= name %>Controller extends BaseController
+{
+    public constructor()
+    {
+        super();
+        this.validator = new <%= name %>Validator();
+    }
+
+    public default(request: Request): string
+    {
+        return this.respond({ message: 'Hello World' }, 200);
+    }
+}

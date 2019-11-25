@@ -1,8 +1,8 @@
 import * as Robot from 'cloudpurge_robotjs';
-import LoggedBaseController from "../../Library/Controllers/LoggedBaseController";
 import MediaValidator from "../Validators/MediaValidator";
+import BaseController from '../../Library/Controllers/BaseController';
 
-export default class MediaController extends LoggedBaseController
+export default class MediaController extends BaseController
 {
     protected mediaPlaying: boolean;
 
