@@ -2,9 +2,9 @@
 
 SynDroid is application that allows you, on the one hand, to control your computer from your phone, and on the other, to get updates from your phone directly on host computer.
 
-- SynDroid is direct replacement for my older project ([ReeMo Server](https://github.com/aleksa-sukovic/reemo-server))
-
 - It was written as an assignment project for `Advanced Programming Techniques` course.
+
+- If you havent already, please read my README file for my [Syndroid Mobile](https://github.com/aleksa-sukovic/syndroid-mobile) project since it is related to this project.
 
 Few sample images are shown `below`.
 
