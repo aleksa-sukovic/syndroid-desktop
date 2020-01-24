@@ -19,6 +19,7 @@ async function initializeMainWindow()
         height: 550,
         resizable: false,
         maximizable: false,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
         },
@@ -50,6 +51,8 @@ function initializeTray() {
         { label: 'Show', type: 'normal', click: () => {
             if (mainWindow === null) {
                 initializeMainWindow();
+            } else {
+                mainWindow.show();
             }
         }},
         { label: '', type: 'separator' },

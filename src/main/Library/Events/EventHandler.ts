@@ -1,5 +1,6 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import Application from "../../Application";
+import { app } from 'electron';
 
 export default class EventHandler
 {
@@ -17,6 +18,16 @@ export default class EventHandler
 
         ipcMain.on('user:is-connected', event => {
             event.sender.send('user:is-connected', application.userConnected());
+        });
+
+        ipcMain.on('action:close', event => {
+            application.stop();
+            EventHandler.windows.forEach(w => w.destroy());
+            app.quit();
+        });
+
+        ipcMain.on('action:minimise', event => {
+            EventHandler.windows.forEach(w => w.minimize());
         });
     }
 

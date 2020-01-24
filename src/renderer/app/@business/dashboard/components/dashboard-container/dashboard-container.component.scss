@@ -5,20 +5,12 @@
     background-color: rgba(183, 201, 208, 0.1);
 }
 
-.caption {
-    .header {
-        font-family: Roboto, serif;
-        font-size: 20px;
-        font-weight: normal;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: white;
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 20px 10px;
-        background-color: #14161B;
-    }
+.title-bar {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 22px;
+    background-color: #14161B;
 }
 
 ul {
@@ -81,5 +73,5 @@ ul {
    font-family: "Roboto", serif;
    font-weight: lighter;
    font-size: 13px;
-   color: #3c5264;
+   color: #BAB8BF;
 }

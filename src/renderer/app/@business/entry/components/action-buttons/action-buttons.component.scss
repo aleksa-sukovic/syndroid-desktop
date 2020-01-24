@@ -1,0 +1,22 @@
+.btn-container {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn {
+    color: white;
+    width: 7px;
+    height: 7px;
+
+    &:hover {
+        color: #5F5A6A;
+        cursor: pointer;
+    }
+}
+
+.btn-minimize {
+    margin-left: 20px;
+}

@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         make \
         gcc \
         libxtst-dev \
-        libpng++-dev
+        libpng++-dev \
+        software-properties-common
 
 # Install NVM, Node, NodeGYP
 RUN curl -sL https://deb.nodesource.com/setup_10.x -o /root/node.sh
