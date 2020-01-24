@@ -17,7 +17,10 @@ Few sample images are shown `below`.
 
 Screenshots can be found [here](https://ibb.co/album/goZpFa).
 
-Checkout [this page](https://github.com/users/aleksa-sukovic/projects/1) for download.
+Available for:
+- [Linux](https://drive.google.com/file/d/1ymBQ8ui9hZS7WfDUVaF-V-kH9EdJV3Yx/view?usp=sharing)
+- Mac (comming soon).
+- Windows (comming soon).
 
 ## Application Structure
 
