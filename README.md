@@ -13,6 +13,12 @@ Few sample images are shown `below`.
 - TypeScript.
 - Angular.
 
+## Preview
+
+Screenshots can be found [here](https://ibb.co/album/goZpFa).
+
+Checkout [this page](https://github.com/users/aleksa-sukovic/projects/1) for download.
+
 ## Application Structure
 
 There were few interesting software design principles and techniques I've used in order to make this project the best it could be at this particular moment with my current knowledge.
