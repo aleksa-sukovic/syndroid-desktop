@@ -6,3 +6,5 @@ services:
             dockerfile: .docker/Ubuntu.dockerfile
         image: aleksa/syndroid-ubunty:18.04
         command: tail -f /dev/null
+        volumes:
+            - .:/usr/src
