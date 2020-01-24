@@ -91,6 +91,7 @@
         "ip": "^1.1.5",
         "qrcode-generator": "^1.4.4",
         "typeface-roboto": "0.0.75",
+        "utf-8-validate": "^5.0.2",
         "ws": "^7.1.2"
     }
 }

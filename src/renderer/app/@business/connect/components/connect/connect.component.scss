@@ -9,7 +9,7 @@
 .header {
     padding-top: 15px;
     font-family: 'Roboto', serif;
-    color: #3c5264;
+    color: #bababc;
 }
 
 .title {
@@ -22,9 +22,9 @@
 .subtitle {
     font-weight: lighter;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     margin: 5px;
-    color: rgb(81, 110, 126);
+    color: #727274;
 }
 
 /* Text */
@@ -32,7 +32,7 @@
     font-family: 'Roboto', 'serif';
     font-weight: lighter;
     text-align: center;
-    color: #6F93A6;
+    color: #BAB8BF;
     margin-bottom: 0 !important;
 }
 
@@ -49,7 +49,8 @@
     }
 
     p {
-        color: #384c5d;
+        color: #BAB8BF;
+        font-weight: bold;
         margin: 0;
     }
 }
