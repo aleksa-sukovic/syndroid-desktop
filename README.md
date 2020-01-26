@@ -4,7 +4,7 @@ SynDroid is application that allows you, on the one hand, to control your comput
 
 - It was written as an assignment project for `Advanced Programming Techniques` course.
 
-- If you havent already, please read my README file for my [Syndroid Mobile](https://github.com/aleksa-sukovic/syndroid-mobile) project since it is related to this project.
+- If you haven't already, please read my README file for my [Syndroid Mobile](https://github.com/aleksa-sukovic/syndroid-mobile) project since it is related to this project.
 
 Few sample images are shown `below`.
 
@@ -13,14 +13,14 @@ Few sample images are shown `below`.
 - TypeScript.
 - Angular.
 
-## Preview
+## Download + Preview
 
 Screenshots can be found [here](https://ibb.co/album/goZpFa).
 
 Available for:
 - [Linux](https://drive.google.com/file/d/1ymBQ8ui9hZS7WfDUVaF-V-kH9EdJV3Yx/view?usp=sharing)
 - Mac (comming soon).
-- Windows (comming soon).
+- [Windows](https://drive.google.com/file/d/1U77dXMBlpvv8kOslpkKcNYS6tRbUfUYf/view?usp=sharing)
 
 ## Application Structure
 
@@ -121,11 +121,6 @@ class MouseController extends BaseController
     }
 ```
 
-## Images
-
-![Syndroid Server Welcome](https://drive.google.com/uc?export=view&id=1mb6MhRxs8O8_qJP5h_bhwn5niz2R1j2_)
-![Syndroid Server Dashboard](https://drive.google.com/uc?export=view&id=1cnZmIaNJPkO6sYNge4Lcmf8zjStQDNGo)
-
 ## Dependencies
 * You will need *node package manager* which comes pre-installed with NodeJS (https://nodejs.org/en)
 * In order to use SynDroid generator you must globally install Yeoman generator library.
@@ -137,7 +132,7 @@ sudo npm install -g yo
 
 1. Clone this repository wherever you see fit.
 2. From terminal, navigate to cloned repository.
-4. Run `npm install`.
+3. Run `npm install`.
 4. From terminal navigate to *syndroid-generator* directory `cd ./src/generators/syndroid-generator`.
 5. Run the following command to make generator globally available: `npm link`.
 6. To run application for local development use `npm run start`.
