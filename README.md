@@ -6,8 +6,6 @@ SynDroid is application that allows you, on the one hand, to control your comput
 
 - If you haven't already, please read my README file for my [Syndroid Mobile](https://github.com/aleksa-sukovic/syndroid-mobile) project since it is related to this project.
 
-Few sample images are shown `below`.
-
 ## Technologies
 - Electron.
 - TypeScript.
