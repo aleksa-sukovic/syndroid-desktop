@@ -86,10 +86,10 @@
         "@fortawesome/fontawesome-free": "^5.10.1",
         "@types/ip": "^1.1.0",
         "@types/ws": "^6.0.3",
-        "cloudpurge_robotjs": "^0.5.2",
         "electron-shutdown-command": "0.0.8",
         "ip": "^1.1.5",
         "qrcode-generator": "^1.4.4",
+        "robotjs": "^0.6.0",
         "typeface-roboto": "0.0.75",
         "utf-8-validate": "^5.0.2",
         "ws": "^7.1.2"

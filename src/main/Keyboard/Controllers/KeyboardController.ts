@@ -1,4 +1,4 @@
-import * as Robot from 'cloudpurge_robotjs';
+import * as Robot from 'robotjs';
 import Request from "../../Library/Router/Request";
 import KeyboardValidator from "../Validators/KeyboardValidator";
 import BaseController from "../../Library/Controllers/BaseController";

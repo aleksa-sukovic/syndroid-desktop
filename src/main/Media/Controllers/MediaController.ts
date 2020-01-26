@@ -1,4 +1,4 @@
-import * as Robot from 'cloudpurge_robotjs';
+import * as Robot from 'robotjs';
 import MediaValidator from "../Validators/MediaValidator";
 import BaseController from '../../Library/Controllers/BaseController';
 
