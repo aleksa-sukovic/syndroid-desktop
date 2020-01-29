@@ -6,11 +6,6 @@ SynDroid is application that allows you, on the one hand, to control your comput
 
 - If you haven't already, please read my README file for my [Syndroid Mobile](https://github.com/aleksa-sukovic/syndroid-mobile) project since it is related to this project.
 
-## Technologies
-- Electron.
-- TypeScript.
-- Angular.
-
 ## Download + Preview
 
 Screenshots can be found [here](https://ibb.co/album/goZpFa).
@@ -19,6 +14,11 @@ Available for:
 - [Linux](https://drive.google.com/file/d/1ymBQ8ui9hZS7WfDUVaF-V-kH9EdJV3Yx/view?usp=sharing)
 - Mac (comming soon).
 - [Windows](https://drive.google.com/file/d/1U77dXMBlpvv8kOslpkKcNYS6tRbUfUYf/view?usp=sharing)
+
+## Technologies
+- Electron.
+- TypeScript.
+- Angular.
 
 ## Application Structure
 
