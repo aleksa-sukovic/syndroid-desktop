@@ -12,7 +12,7 @@ Screenshots can be found [here](https://ibb.co/album/goZpFa).
 
 Available for:
 - [Linux](https://drive.google.com/file/d/1ymBQ8ui9hZS7WfDUVaF-V-kH9EdJV3Yx/view?usp=sharing)
-- Mac (comming soon).
+- [Mac](https://drive.google.com/file/d/1cknp5ur2ohA5S0ULstnzlrLR-07eawy3/view?usp=sharing)
 - [Windows](https://drive.google.com/file/d/1U77dXMBlpvv8kOslpkKcNYS6tRbUfUYf/view?usp=sharing)
 
 ## Technologies
