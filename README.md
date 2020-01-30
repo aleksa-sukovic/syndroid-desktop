@@ -2,7 +2,7 @@
 
 SynDroid is application that allows you, on the one hand, to control your computer from your phone, and on the other, to get updates from your phone directly on host computer.
 
-- It was written as an assignment project for `Advanced Programming Techniques` course.
+- It was originally written as an assignment project for `Advanced Programming Techniques` course.
 
 - If you haven't already, please read my README file for my [Syndroid Mobile](https://github.com/aleksa-sukovic/syndroid-mobile) project since it is related to this project.
 
